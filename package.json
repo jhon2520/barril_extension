@@ -3,14 +3,18 @@
   "displayName": "Barrel files generator",
   "publisher": "JhonRomero",
   "description": "Creator of barrel files",
-  "icon": "images/logo-black.png",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.90.0"
   },
   "categories": [
     "Other"
   ],
+  "icon": "images/logo-black.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhon2520/barril_extension"
+},
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
