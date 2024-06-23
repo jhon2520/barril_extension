@@ -15,6 +15,7 @@
     "type": "git",
     "url": "https://github.com/jhon2520/barril_extension"
   },
+  "license": "MIT",
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
