@@ -4,22 +4,22 @@
   "publisher": "JhonRomero",
   "description": "Creator of barrel files",
   "icon": "images/logo-black.png",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.90.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    
-  ],
+  "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "barrel-files-generator.barrelGenerator",
-      "title": "BarrelGenerator"
-    }]
+    "commands": [
+      {
+        "command": "barrel-files-generator.barrelGenerator",
+        "title": "BarrelGenerator"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
