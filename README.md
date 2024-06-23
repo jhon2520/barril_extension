@@ -1,6 +1,6 @@
-# barril-files-generator README
+# barrel-files-generator README
 
-This is the README for your extension "barril-files-generator". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "barrel-files-generator". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 

@@ -3,68 +3,46 @@ const fs = require("fs");
 const path = require("path");
 
 
-// const showFilesInDirectory = () => {
-// 	const editor = vscode.window.activeTextEditor;
-
-// 	let filesNames = [];
-// 	if (editor) {
-// 		const filePath = editor.document.fileName;
-// 		const directoryPath = path.dirname(filePath);
-
-
-// 		fs.readdir(directoryPath, (err, files) => {
-// 			if (err) {
-// 				vscode.window.showErrorMessage(`Se ha generado un error: ${err.message}`);
-// 				return;
-// 			}
-// 			vscode.window.showInformationMessage(`Files in ${directoryPath}: ${files.join(', ')}`)
-// 			filesNames = files;
-// 		});
-// 	} else {
-// 		vscode.window.showInformationMessage("No active editor found");
-// 	}
-
-// 	return filesNames;
-// }
 
 const createFile = async () => {
+
 	const editor = vscode.window.activeTextEditor;
 	if (!editor) {
-		vscode.window.showInformationMessage("No active editor found.");
+		vscode.window.showInformationMessage("Barrel generator: No editor found.");
 		return;
 	}
 
 	let activeTextEditor = vscode.window.activeTextEditor;
 	let language = activeTextEditor.document.languageId;
-	vscode.window.showInformationMessage(`Curent lenguaje is ${language}`)
 	const filePath = editor.document.fileName;
 	const directoryPath = path.dirname(filePath);
 
+	if(language != "dart"){
+		vscode.window.showErrorMessage("current language is not supported")
+		return;
+	}
 
 	let filesNames = [];
-
 	fs.readdir(directoryPath, (err, files) => {
 		if (err) {
-			vscode.window.showErrorMessage(`Se ha generado un error: ${err.message}`);
+			vscode.window.showErrorMessage(`Barrel generatorerror: ${err.message}`);
 			return;
 		}
-		vscode.window.showInformationMessage(`Files in ${directoryPath}: ${files.join(' ')}`);
+		// vscode.window.showInformationMessage(`Files in ${directoryPath}: ${files.join(' ')}`);
 		filesNames = files;
 
 	});
 
 	const fileName = await vscode.window.showInputBox({
-		prompt: "Enter the name of barril file",
+		prompt: "Enter the Barrel name file",
 		placeHolder: "index",
-		value:"index"
+		value: "index"
 	});
 
 	if (!fileName) {
-		vscode.window.showInformationMessage("File creation cancelled.")
+		vscode.window.showInformationMessage("Barrel generator: Process cancelled.")
 		return;
 	}
-
-
 
 	const newFilePath = path.join(directoryPath, fileName);
 	fs.writeFile(`${newFilePath}.dart`, filesNames.map(e => {
@@ -74,9 +52,9 @@ const createFile = async () => {
 		})
 		.toString().replaceAll(",", ""), (err) => {
 			if (err) {
-				vscode.window.showErrorMessage("Error creating file");
+				vscode.window.showErrorMessage("Barrel generator: Error creating file");
 			}
-			vscode.window.showInformationMessage(`file ${fileName} created`);
+			vscode.window.showInformationMessage(`Barrel generator: File ${fileName} created in ${language}`);
 		});
 }
 
@@ -85,25 +63,12 @@ const createFile = async () => {
  */
 function activate(context) {
 
-
-
-
-	// showFilesInDirectory();
-	// createFile();
-
-	const disposable = vscode.commands.registerCommand('barril-files-generator.BarrilGenerator', async () => {
-
+	const disposable = vscode.commands.registerCommand('barrel-files-generator.barrelGenerator', async () => {
 		createFile();
-
-
-
-		vscode.window.showInformationMessage('Hello World from Barril files generator!');
 	});
-
 	context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
 function deactivate() {}
 
 module.exports = {

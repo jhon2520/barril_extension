@@ -1,7 +1,7 @@
 {
-  "name": "barril-files-generator",
-  "displayName": "Barril files generator",
-  "description": "Creator of barril files",
+  "name": "barrel-files-generator",
+  "displayName": "Barrel files generator",
+  "description": "Creator of barrel files",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.90.0"
@@ -15,8 +15,8 @@
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "barril-files-generator.BarrilGenerator",
-      "title": "BarrilGenerator"
+      "command": "barrel-files-generator.barrelGenerator",
+      "title": "BarrelGenerator"
     }]
   },
   "scripts": {
