@@ -4,6 +4,8 @@ const path = require("path");
 
 
 
+
+
 const createFile = async () => {
 
 	const editor = vscode.window.activeTextEditor;
@@ -12,6 +14,13 @@ const createFile = async () => {
 		return;
 	}
 
+	// get config
+	const config = vscode.workspace.getConfiguration("barrel-files-generator");
+	const quoteValue = config.get("quote");
+	vscode.window.showInformationMessage(`quote barrel fiel is ${quoteValue}`)
+
+
+	// get path
 	let activeTextEditor = vscode.window.activeTextEditor;
 	let language = activeTextEditor.document.languageId;
 	const filePath = editor.document.fileName;
@@ -28,7 +37,6 @@ const createFile = async () => {
 			vscode.window.showErrorMessage(`Barrel generatorerror: ${err.message}`);
 			return;
 		}
-		// vscode.window.showInformationMessage(`Files in ${directoryPath}: ${files.join(' ')}`);
 		filesNames = files;
 
 	});
@@ -47,7 +55,7 @@ const createFile = async () => {
 	const newFilePath = path.join(directoryPath, fileName);
 	fs.writeFile(`${newFilePath}.dart`, filesNames.map(e => {
 			if (!e.includes(fileName)) {
-				return `export "${e}";\n`
+				return `export ${quoteValue}${e}${quoteValue};\n`
 			}
 		})
 		.toString().replaceAll(",", ""), (err) => {
@@ -75,3 +83,5 @@ module.exports = {
 	activate,
 	deactivate
 }
+
+

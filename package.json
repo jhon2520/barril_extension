@@ -1,6 +1,6 @@
 {
   "name": "barrel-files-generator",
-  "displayName": "Barrel files generator",
+  "displayName": "Barrel Files Generator",
   "publisher": "JhonRomero",
   "description": "Creator of barrel files",
   "version": "0.1.0",
@@ -19,10 +19,22 @@
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
+
+    "configuration":{
+      "title": "Barrel Generator Config",
+      "properties": {
+        "barrel-files-generator.quote":{
+          "type":"string",
+          "default":"'",
+          "description":"Defines a symbol or string that you want to use as quoute for your barrel fiels."
+        }
+      }
+    },
+
     "commands": [
       {
         "command": "barrel-files-generator.barrelGenerator",
-        "title": "BarrelGenerator"
+        "title": "Barrel Generator"
       }
     ]
   },
