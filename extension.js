@@ -17,7 +17,6 @@ const createFile = async () => {
 	// get config
 	const config = vscode.workspace.getConfiguration("barrel-files-generator");
 	const quoteValue = config.get("quote");
-	vscode.window.showInformationMessage(`quote barrel fiel is ${quoteValue}`)
 
 
 	// get path
