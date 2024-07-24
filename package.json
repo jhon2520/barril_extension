@@ -10,7 +10,7 @@
   "categories": [
     "Other"
   ],
-  "icon": "images/logo-black.png",
+  "icon": "images/logo192x192.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/jhon2520/barril_extension"
